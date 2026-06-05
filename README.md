@@ -63,9 +63,13 @@ PPTer 是一个本地运行的课件学习助手 MVP。用户可以上传课程 
 ├── exports/
 │   └── markdown_exporter.py
 ├── desktop_app.py
+├── .github/
+│   └── workflows/
+│       └── windows-release.yml
 ├── packaging/
 │   ├── build_macos_app.sh
-│   └── build_windows_app.ps1
+│   ├── build_windows_app.ps1
+│   └── windows_installer.iss
 ├── requirements.txt
 ├── requirements-build.txt
 └── README.md
@@ -186,6 +190,13 @@ dist/PPTer.app
 
 ### Windows
 
+Windows 安装包需要在 Windows 环境构建。项目已经提供两种方式：
+
+1. 本地 Windows 电脑运行 PowerShell 脚本，生成可执行程序目录。
+2. GitHub Actions 云端构建，生成可安装的 `PPTer-Setup.exe`。
+
+#### 本地生成 exe 目录
+
 在 PowerShell 中运行：
 
 ```powershell
@@ -199,7 +210,39 @@ dist/PPTer.app
 dist/PPTer/PPTer.exe
 ```
 
-注意：PyInstaller 通常需要在目标系统对应平台打包。也就是说，macOS 上打包 `.app`，Windows 上打包 `.exe`。
+#### 云端生成安装包
+
+在 GitHub 仓库页面进入：
+
+```text
+Actions -> Build Windows Installer -> Run workflow
+```
+
+常用参数：
+
+- `release_tag`：例如 `v0.1.0`
+- `upload_release`：选择 `true` 时，会把安装包上传到该 tag 对应的 GitHub Release
+
+构建完成后可以在 workflow 的 Artifacts 中下载：
+
+```text
+PPTer-Setup.exe
+```
+
+如果想通过命令行触发：
+
+```bash
+gh workflow run "Build Windows Installer" -f release_tag=v0.1.0 -f upload_release=true
+```
+
+也可以直接推送 tag 触发 Release 上传：
+
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+注意：PyInstaller 通常需要在目标系统对应平台打包。也就是说，macOS 上打包 `.app`，Windows 或 GitHub Actions Windows runner 上打包 `.exe` / `.exe` 安装器。
 
 ## 常见问题排查
 
