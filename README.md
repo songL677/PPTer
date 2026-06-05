@@ -1,6 +1,6 @@
-# AI 学习助手桌面原型
+# PPTer
 
-这是一个本地运行的 AI 学习助手 MVP。用户可以上传课程 PDF 或 PPTX 课件，软件会解析文字内容，并调用本机 Ollama 模型生成复习材料。
+PPTer 是一个本地运行的课件学习助手 MVP。用户可以上传课程 PDF 或 PPTX 课件，软件会解析文字内容，并调用本机 Ollama 模型生成复习材料。
 
 项目定位是“可跑通功能闭环的桌面原型”：不需要服务器、不需要用户登录，适合学生把课程资料快速整理为考前复习笔记、可能考点和练习题。
 
@@ -49,6 +49,7 @@
 .
 ├── app.py
 ├── ai/
+│   ├── api_client.py
 │   ├── ollama_client.py
 │   └── prompts.py
 ├── parsers/
@@ -65,8 +66,6 @@
 ├── packaging/
 │   ├── build_macos_app.sh
 │   └── build_windows_app.ps1
-├── data/
-├── generated_exports/
 ├── requirements.txt
 ├── requirements-build.txt
 └── README.md
@@ -99,7 +98,7 @@ pip install -r requirements.txt
 ollama serve
 ```
 
-如果你使用的是 Ollama 桌面版，通常打开应用后本地服务会自动运行。
+如果使用 Ollama 桌面版，通常打开应用后本地服务会自动运行。
 
 ## 拉取模型
 
@@ -176,7 +175,7 @@ bash packaging/build_macos_app.sh
 打包完成后应用位于：
 
 ```text
-dist/AI学习助手.app
+dist/PPTer.app
 ```
 
 可以把这个 `.app` 压缩成 zip 后发给别人下载。
@@ -197,7 +196,7 @@ dist/AI学习助手.app
 打包完成后应用位于：
 
 ```text
-dist/AI学习助手/AI学习助手.exe
+dist/PPTer/PPTer.exe
 ```
 
 注意：PyInstaller 通常需要在目标系统对应平台打包。也就是说，macOS 上打包 `.app`，Windows 上打包 `.exe`。
