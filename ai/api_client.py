@@ -36,7 +36,7 @@ class OpenAICompatibleClient:
             "messages": [
                 {
                     "role": "system",
-                    "content": "你是一个严谨的中文 AI 学习助手，只根据用户提供的课件内容生成复习材料。",
+                    "content": "你是 PPTer，一个严谨的中文课件学习助手，只根据用户提供的课件内容生成复习材料。",
                 },
                 {"role": "user", "content": prompt},
             ],
