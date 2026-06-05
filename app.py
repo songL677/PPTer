@@ -15,7 +15,7 @@ from storage.db import get_history, init_db, list_history
 
 
 st.set_page_config(
-    page_title="AI 学习助手",
+    page_title="PPTer",
     page_icon="📚",
     layout="wide",
 )
@@ -138,7 +138,7 @@ if "result_model_name" not in st.session_state:
 model_settings = _model_from_sidebar()
 model_name = model_settings["model_name"]
 
-st.title("AI 学习助手")
+st.title("PPTer")
 st.caption("本地运行的课程 PDF / PPTX 复习材料生成原型。")
 
 upload_col, parse_col = st.columns([1.1, 0.9], gap="large")
