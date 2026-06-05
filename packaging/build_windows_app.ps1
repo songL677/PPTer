@@ -12,7 +12,7 @@ if (Test-Path ".\.venv\Scripts\python.exe") {
 & $PythonBin -m PyInstaller `
   --noconfirm `
   --windowed `
-  --name "AI学习助手" `
+  --name "PPTer" `
   --collect-all streamlit `
   --collect-all altair `
   --collect-all pydeck `
@@ -27,4 +27,4 @@ if (Test-Path ".\.venv\Scripts\python.exe") {
   --add-data "exports;exports" `
   desktop_app.py
 
-Write-Host "打包完成：dist/AI学习助手/AI学习助手.exe"
+Write-Host "打包完成：dist/PPTer/PPTer.exe"
