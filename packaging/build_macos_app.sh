@@ -15,7 +15,7 @@ export PYINSTALLER_CONFIG_DIR="${PYINSTALLER_CONFIG_DIR:-/private/tmp/ppter_pyin
 "$PYTHON_BIN" -m PyInstaller \
   --noconfirm \
   --windowed \
-  --name "AI学习助手" \
+  --name "PPTer" \
   --collect-all streamlit \
   --collect-all altair \
   --collect-all pydeck \
@@ -30,4 +30,4 @@ export PYINSTALLER_CONFIG_DIR="${PYINSTALLER_CONFIG_DIR:-/private/tmp/ppter_pyin
   --add-data "exports:exports" \
   desktop_app.py
 
-echo "打包完成：dist/AI学习助手.app"
+echo "打包完成：dist/PPTer.app"
