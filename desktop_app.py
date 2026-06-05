@@ -7,7 +7,7 @@ import webbrowser
 from pathlib import Path
 
 
-APP_TITLE = "AI 学习助手"
+APP_TITLE = "PPTer"
 
 
 def _project_root() -> Path:
